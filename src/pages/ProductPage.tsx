@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { getProduct, getCollection, formats, getCollectionProducts, type FormatId } from '@/data/products';
 import OlfactoryPyramid from '@/components/OlfactoryPyramid';
+import ProductStory from '@/components/ProductStory';
 import ProductCard from '@/components/ProductCard';
 import { useCart } from '@/context/CartContext';
 import { Recycle, Check, Minus, Plus } from 'lucide-react';
@@ -152,6 +153,9 @@ const ProductPage = () => {
 
             {/* Pyramid */}
             <OlfactoryPyramid notes={product.notes} accentColor={collection.colors.accent} />
+
+            {/* Product Story */}
+            <ProductStory productId={product.id} accentColor={collection.colors.accent} />
           </motion.div>
         </div>
 
