@@ -7,6 +7,8 @@ import { CartProvider } from "@/context/CartContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CartDrawer from "@/components/CartDrawer";
+import DynamicBackground from "@/components/DynamicBackground";
+import SplashScreen from "@/components/SplashScreen";
 import Index from "./pages/Index";
 import Collections from "./pages/Collections";
 import CollectionPage from "./pages/CollectionPage";
@@ -25,21 +27,24 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Navbar />
-          <CartDrawer />
-          <main>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/collections" element={<Collections />} />
-              <Route path="/collection/:id" element={<CollectionPage />} />
-              <Route path="/produit/:id" element={<ProductPage />} />
-              <Route path="/coffret" element={<DiscoveryBox />} />
-              <Route path="/histoire" element={<OurStory />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
-          <Footer />
+          <SplashScreen>
+            <DynamicBackground />
+            <Navbar />
+            <CartDrawer />
+            <main>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/collections" element={<Collections />} />
+                <Route path="/collection/:id" element={<CollectionPage />} />
+                <Route path="/produit/:id" element={<ProductPage />} />
+                <Route path="/coffret" element={<DiscoveryBox />} />
+                <Route path="/histoire" element={<OurStory />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </main>
+            <Footer />
+          </SplashScreen>
         </BrowserRouter>
       </CartProvider>
     </TooltipProvider>

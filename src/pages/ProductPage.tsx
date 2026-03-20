@@ -153,6 +153,9 @@ const ProductPage = () => {
 
             {/* Pyramid */}
             <OlfactoryPyramid notes={product.notes} accentColor={collection.colors.accent} />
+
+            {/* Product Story */}
+            <ProductStory productId={product.id} accentColor={collection.colors.accent} />
           </motion.div>
         </div>
 
