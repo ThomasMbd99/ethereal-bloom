@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { getProduct, getCollection, formats, getCollectionProducts, type FormatId } from '@/data/products';
 import OlfactoryPyramid from '@/components/OlfactoryPyramid';
+import ProductStory from '@/components/ProductStory';
 import ProductCard from '@/components/ProductCard';
 import { useCart } from '@/context/CartContext';
 import { Recycle, Check, Minus, Plus } from 'lucide-react';
