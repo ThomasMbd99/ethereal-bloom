@@ -100,8 +100,8 @@ const ProductPage = () => {
                   >
                     <span className="block">{f.label}</span>
                     <span className="block text-xs mt-0.5">{f.price}€</span>
-                    {f.eco && (
-                      <span className="inline-flex items-center gap-1 text-[10px] mt-1 text-green-500">
+                    {'eco' in f && (f as any).eco && (
+                      <span className="inline-flex items-center gap-1 text-[10px] mt-1 text-primary">
                         <Recycle className="w-3 h-3" /> Éco-responsable
                       </span>
                     )}
