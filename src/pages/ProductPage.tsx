@@ -59,12 +59,16 @@ const ProductPage = () => {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="aspect-[3/4] rounded-lg flex items-center justify-center"
+            className="aspect-[3/4] rounded-lg flex items-center justify-center relative overflow-hidden"
             style={{ background: `linear-gradient(135deg, hsl(0 0% 8%), hsl(0 0% 12%))` }}
           >
-            <div className="text-center">
-              <span className="font-display text-4xl lg:text-6xl text-primary tracking-wider">{product.name}</span>
-              <p className="font-body text-xs text-muted-foreground mt-4 tracking-wider uppercase">{collection.name}</p>
+            <img
+              src={getBottleImage(product.collection)}
+              alt={product.name}
+              className="h-[65%] w-auto object-contain drop-shadow-2xl"
+            />
+            <div className="absolute bottom-6 left-0 right-0 text-center">
+              <span className="font-display text-2xl text-primary/60 tracking-wider">{product.name}</span>
             </div>
           </motion.div>
 
