@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { getProduct, getCollection, formats, getCollectionProducts, type FormatId } from '@/data/products';
+import { getBottleImage } from '@/data/bottleImages';
 import OlfactoryPyramid from '@/components/OlfactoryPyramid';
 import ProductStory from '@/components/ProductStory';
 import ProductCard from '@/components/ProductCard';
