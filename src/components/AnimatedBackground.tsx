@@ -50,7 +50,12 @@ const collectionThemes: Record<Collection, {
   },
 };
 
-const defaultTheme = {
+type ThemeStyle = 'warm' | 'tropical' | 'smoke' | 'petals';
+
+const defaultTheme: {
+  gradient: string; particleColors: string[]; particleCount: number;
+  bokehCount: number; bokehColors: string[]; speed: number; style: ThemeStyle;
+} = {
   gradient: '#0A0A0A',
   particleColors: ['201,168,112', '180,140,80'],
   particleCount: 20,
