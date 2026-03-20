@@ -16,6 +16,7 @@ import ProductPage from "./pages/ProductPage";
 import DiscoveryBox from "./pages/DiscoveryBox";
 import OurStory from "./pages/OurStory";
 import Contact from "./pages/Contact";
+import Quiz from "./pages/Quiz";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
