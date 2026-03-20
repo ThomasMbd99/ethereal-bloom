@@ -29,7 +29,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <SplashScreen>
-            <DynamicBackground />
+            <AnimatedBackground />
             <Navbar />
             <CartDrawer />
             <main>
