@@ -41,6 +41,7 @@ const App = () => (
                 <Route path="/coffret" element={<DiscoveryBox />} />
                 <Route path="/histoire" element={<OurStory />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/quiz" element={<Quiz />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
