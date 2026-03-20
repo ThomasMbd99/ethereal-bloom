@@ -8,6 +8,7 @@ const navLinks = [
   { to: '/', label: 'Accueil' },
   { to: '/collections', label: 'Nos Créations' },
   { to: '/coffret', label: 'Coffret Découverte' },
+  { to: '/quiz', label: 'Quiz Olfactif' },
   { to: '/histoire', label: 'Notre Histoire' },
   { to: '/contact', label: 'Contact' },
 ];

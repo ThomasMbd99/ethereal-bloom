@@ -7,7 +7,7 @@ import { CartProvider } from "@/context/CartContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CartDrawer from "@/components/CartDrawer";
-import DynamicBackground from "@/components/DynamicBackground";
+import AnimatedBackground from "@/components/AnimatedBackground";
 import SplashScreen from "@/components/SplashScreen";
 import Index from "./pages/Index";
 import Collections from "./pages/Collections";
@@ -16,6 +16,7 @@ import ProductPage from "./pages/ProductPage";
 import DiscoveryBox from "./pages/DiscoveryBox";
 import OurStory from "./pages/OurStory";
 import Contact from "./pages/Contact";
+import Quiz from "./pages/Quiz";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,7 +29,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <SplashScreen>
-            <DynamicBackground />
+            <AnimatedBackground />
             <Navbar />
             <CartDrawer />
             <main>
@@ -40,6 +41,7 @@ const App = () => (
                 <Route path="/coffret" element={<DiscoveryBox />} />
                 <Route path="/histoire" element={<OurStory />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/quiz" element={<Quiz />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
