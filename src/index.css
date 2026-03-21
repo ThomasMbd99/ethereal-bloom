@@ -144,3 +144,11 @@
 .btn-ripple:hover::after {
   opacity: 1;
 }
+
+/* Scroll bar animation */
+@keyframes sb {
+  0% { top: -100%; }
+  50% { top: 100%; }
+  51% { top: -100%; }
+  100% { top: -100%; }
+}

@@ -46,7 +46,7 @@ const ProductPage = () => {
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Breadcrumb */}
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mb-8 font-body text-xs text-muted-foreground">
-          <Link to="/collections" className="hover:text-primary transition-colors">Nos Créations</Link>
+          <Link to="/collections" className="hover:text-primary transition-colors">Nos Gammes</Link>
           {' / '}
           <Link to={`/collection/${collection.id}`} className="hover:text-primary transition-colors">{collection.name}</Link>
           {' / '}
