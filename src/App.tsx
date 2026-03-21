@@ -1,9 +1,10 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { CartProvider } from "@/context/CartContext";
+import { AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CartDrawer from "@/components/CartDrawer";
@@ -21,6 +22,25 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+const AnimatedRoutes = () => {
+  const location = useLocation();
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Index />} />
+        <Route path="/collections" element={<Collections />} />
+        <Route path="/collection/:id" element={<CollectionPage />} />
+        <Route path="/produit/:id" element={<ProductPage />} />
+        <Route path="/coffret" element={<DiscoveryBox />} />
+        <Route path="/histoire" element={<OurStory />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/quiz" element={<Quiz />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </AnimatePresence>
+  );
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -33,17 +53,7 @@ const App = () => (
             <Navbar />
             <CartDrawer />
             <main>
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/collections" element={<Collections />} />
-                <Route path="/collection/:id" element={<CollectionPage />} />
-                <Route path="/produit/:id" element={<ProductPage />} />
-                <Route path="/coffret" element={<DiscoveryBox />} />
-                <Route path="/histoire" element={<OurStory />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/quiz" element={<Quiz />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
+              <AnimatedRoutes />
             </main>
             <Footer />
           </SplashScreen>
