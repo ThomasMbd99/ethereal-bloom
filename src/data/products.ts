@@ -39,8 +39,8 @@ export const collections: CollectionInfo[] = [
   },
   {
     id: 'vitaea',
-    name: 'VITÆA',
-    displayName: 'VIT<span class="ae-highlight">Æ</span>A',
+    name: 'VITÆ',
+    displayName: 'VIT<span class="ae-highlight">Æ</span>',
     description: 'Fruitée & Fraîche — L\'éclat solaire capturé dans chaque goutte.',
     mood: 'Vivante, énergique, solaire',
     colors: { accent: '#A8D400', bg: '#F5FBE5', text: '#2D3A0F' },

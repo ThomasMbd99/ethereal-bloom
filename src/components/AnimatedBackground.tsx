@@ -1,6 +1,6 @@
-import { useEffect, useRef, useMemo, useCallback } from 'react';
-import { useLocation } from 'react-router-dom';
-import { collections, getProduct, type Collection } from '@/data/products';
+import { useEffect, useRef, useCallback } from 'react';
+import { type Collection } from '@/data/products';
+import { useTheme } from '@/context/ThemeContext';
 
 // Per-collection particle/atmosphere configs
 const collectionThemes: Record<Collection, {
@@ -15,7 +15,7 @@ const collectionThemes: Record<Collection, {
   sacrae: {
     gradient: 'linear-gradient(180deg, #1A1610 0%, #0D0B08 100%)',
     particleColors: ['201,168,112', '196,149,106', '245,240,225'],
-    particleCount: 40,
+    particleCount: 25,
     bokehCount: 8,
     bokehColors: ['201,168,112', '196,149,106', '245,240,225'],
     speed: 0.3,
@@ -24,8 +24,8 @@ const collectionThemes: Record<Collection, {
   vitaea: {
     gradient: 'linear-gradient(180deg, #0A0F08 0%, #080A06 100%)',
     particleColors: ['168,212,0', '255,179,71', '255,111,97', '76,175,80'],
-    particleCount: 55,
-    bokehCount: 12,
+    particleCount: 25,
+    bokehCount: 8,
     bokehColors: ['168,212,0', '255,179,71', '255,111,97'],
     speed: 0.7,
     style: 'tropical',
@@ -33,8 +33,8 @@ const collectionThemes: Record<Collection, {
   umbrae: {
     gradient: 'linear-gradient(180deg, #080404 0%, #2A0A0A 100%)',
     particleColors: ['107,0,0', '139,105,20', '74,14,14'],
-    particleCount: 30,
-    bokehCount: 6,
+    particleCount: 25,
+    bokehCount: 7,
     bokehColors: ['107,0,0', '74,14,14', '139,105,20'],
     speed: 0.15,
     style: 'smoke',
@@ -42,8 +42,8 @@ const collectionThemes: Record<Collection, {
   florae: {
     gradient: 'linear-gradient(180deg, #0F0A10 0%, #0A070B 100%)',
     particleColors: ['244,194,194', '212,168,212', '178,223,219'],
-    particleCount: 35,
-    bokehCount: 10,
+    particleCount: 30,
+    bokehCount: 7,
     bokehColors: ['244,194,194', '212,168,212', '178,223,219'],
     speed: 0.2,
     style: 'petals',
@@ -90,26 +90,13 @@ const AnimatedBackground = () => {
   const bokehRef = useRef<Bokeh[]>([]);
   const themeRef = useRef(defaultTheme);
   const transRef = useRef({ from: defaultTheme, to: defaultTheme, progress: 1 });
-  const { pathname } = useLocation();
-
-  const collectionId = useMemo<Collection | null>(() => {
-    const colMatch = pathname.match(/^\/collection\/(\w+)/);
-    if (colMatch) {
-      const id = colMatch[1] as Collection;
-      if (collections.find(c => c.id === id)) return id;
-    }
-    const prodMatch = pathname.match(/^\/produit\/(\w+)/);
-    if (prodMatch) {
-      const product = getProduct(prodMatch[1]);
-      if (product) return product.collection;
-    }
-    return null;
-  }, [pathname]);
+  const { pendingTheme } = useTheme();
+  const collectionId: Collection | null = pendingTheme;
 
   // Apply background gradient to body
   useEffect(() => {
     const body = document.body;
-    body.style.transition = 'background 0.8s ease-in-out';
+    body.style.transition = 'background 1s ease-in-out';
     const theme = collectionId ? collectionThemes[collectionId] : defaultTheme;
     body.style.background = theme.gradient;
     return () => { body.style.background = '#0A0A0A'; body.style.transition = ''; };
@@ -131,7 +118,7 @@ const AnimatedBackground = () => {
       vx: (Math.random() - 0.5) * theme.speed,
       vy: type === 'smoke' ? -(Math.random() * 0.3 + 0.1) * theme.speed : -(Math.random() * 0.5 + 0.2) * theme.speed,
       size: type === 'petal' ? Math.random() * 6 + 3 : type === 'smoke' ? Math.random() * 30 + 15 : Math.random() * 2.5 + 0.5,
-      opacity: type === 'smoke' ? Math.random() * 0.04 + 0.01 : Math.random() * 0.5 + 0.2,
+      opacity: type === 'smoke' ? Math.random() * 0.05 + 0.02 : Math.random() * 0.45 + 0.15,
       color,
       life: init ? Math.random() * 300 : 0,
       maxLife: 300 + Math.random() * 400,
@@ -149,7 +136,7 @@ const AnimatedBackground = () => {
       vx: (Math.random() - 0.5) * 0.12,
       vy: (Math.random() - 0.5) * 0.1,
       radius: Math.random() * 140 + 40,
-      opacity: Math.random() * 0.06 + 0.015,
+      opacity: Math.random() * 0.07 + 0.02,
       color,
       pulsePhase: Math.random() * Math.PI * 2,
       pulseSpeed: Math.random() * 0.008 + 0.003,
@@ -243,7 +230,7 @@ const AnimatedBackground = () => {
 
         if (p.type === 'petal') {
           // Petal shape
-          ctx.fillStyle = `rgba(${p.color},${alpha * 0.6})`;
+          ctx.fillStyle = `rgba(${p.color},${alpha * 0.7})`;
           ctx.beginPath();
           ctx.ellipse(0, 0, p.size, p.size * 0.5, 0, 0, Math.PI * 2);
           ctx.fill();
@@ -266,7 +253,7 @@ const AnimatedBackground = () => {
           // Tiny glow
           if (p.size > 1.5) {
             const dg = ctx.createRadialGradient(0, 0, 0, 0, 0, p.size * 4);
-            dg.addColorStop(0, `rgba(${p.color},${alpha * 0.3})`);
+            dg.addColorStop(0, `rgba(${p.color},${alpha * 0.35})`);
             dg.addColorStop(1, 'rgba(0,0,0,0)');
             ctx.fillStyle = dg;
             ctx.beginPath();
@@ -305,7 +292,7 @@ const AnimatedBackground = () => {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 z-0 pointer-events-none"
-      style={{ opacity: 0.85 }}
+      style={{ opacity: 1 }}
     />
   );
 };

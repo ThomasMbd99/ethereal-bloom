@@ -33,10 +33,10 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       } else {
         document.documentElement.removeAttribute('data-theme');
       }
-    }, 1500);
+    }, 500);
     setTimeout(() => {
       setIsTransitioning(false);
-    }, 3200);
+    }, 1200);
   }, []);
 
   return (

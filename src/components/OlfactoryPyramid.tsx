@@ -29,12 +29,15 @@ const OlfactoryPyramid = ({ notes, accentColor = 'hsl(var(--gold))' }: Props) =>
             className="py-3 px-4 rounded text-center"
             style={{
               width: section.width,
-              background: `linear-gradient(135deg, ${accentColor}11, ${accentColor}08)`,
-              borderLeft: `2px solid ${accentColor}44`,
+              background: `linear-gradient(135deg, ${accentColor}28, ${accentColor}14)`,
+              borderLeft: `2px solid ${accentColor}99`,
+              borderTop: `1px solid ${accentColor}33`,
+              borderBottom: `1px solid ${accentColor}22`,
+              boxShadow: `0 2px 16px ${accentColor}18`,
             }}
           >
-            <p className="font-body text-[10px] uppercase tracking-widest text-muted-foreground mb-1">{section.label}</p>
-            <p className="font-body text-sm">{section.items.join(' · ')}</p>
+            <p className="font-body text-[10px] uppercase tracking-widest mb-1" style={{ color: `${accentColor}cc` }}>{section.label}</p>
+            <p className="font-body text-sm text-foreground/90">{section.items.join(' · ')}</p>
           </div>
         </motion.div>
       ))}
