@@ -19,6 +19,7 @@ export interface CollectionInfo {
   id: Collection;
   name: string;
   displayName: string;
+  category: string;
   description: string;
   mood: string;
   colors: {
@@ -33,7 +34,8 @@ export const collections: CollectionInfo[] = [
     id: 'sacrae',
     name: 'SACRÆ',
     displayName: 'SACR<span class="ae-highlight">Æ</span>',
-    description: 'Gourmande & Sucrée — Un voyage sensoriel au cœur de la douceur absolue.',
+    category: 'Gourmande & Sucrée',
+    description: 'La gourmandise y prend une forme plus profonde, plus dense, presque envoûtante.',
     mood: 'Douce, chaleureuse, enveloppante',
     colors: { accent: '#C4956A', bg: '#F5F0E1', text: '#3D2B1F' },
   },
@@ -41,7 +43,8 @@ export const collections: CollectionInfo[] = [
     id: 'vitaea',
     name: 'VITÆ',
     displayName: 'VIT<span class="ae-highlight">Æ</span>',
-    description: 'Fruitée & Fraîche — L\'éclat solaire capturé dans chaque goutte.',
+    category: 'Fruitée & Fraîche',
+    description: 'Le fruit y pulse comme une lumière vive, libre et insaisissable.',
     mood: 'Vivante, énergique, solaire',
     colors: { accent: '#A8D400', bg: '#F5FBE5', text: '#2D3A0F' },
   },
@@ -49,7 +52,8 @@ export const collections: CollectionInfo[] = [
     id: 'umbrae',
     name: 'UMBRÆ',
     displayName: 'UMBR<span class="ae-highlight">Æ</span>',
-    description: 'Boisée & Ambrée — Les ténèbres parfumées, le mystère incarné.',
+    category: 'Boisée & Ambrée',
+    description: "L'ombre y rencontre la chaleur dans une profondeur calme et souveraine.",
     mood: 'Mystérieuse, envoûtante, profonde',
     colors: { accent: '#8B6914', bg: '#1A1210', text: '#D4B896' },
   },
@@ -57,7 +61,8 @@ export const collections: CollectionInfo[] = [
     id: 'florae',
     name: 'FLORÆ',
     displayName: 'FLOR<span class="ae-highlight">Æ</span>',
-    description: 'Florale & Poudrée — La grâce des pétales à l\'aube.',
+    category: 'Florale & Poudrée',
+    description: 'La fleur y laisse un voile tendre, lumineux et délicatement troublant.',
     mood: 'Douce, aérienne, romantique',
     colors: { accent: '#D4A8D4', bg: '#FFF8F0', text: '#4A3040' },
   },
@@ -100,9 +105,9 @@ export const products: Product[] = [
     id: 'zaemyr',
     name: 'Z\u00C6MYR',
     collection: 'sacrae',
-    tagline: 'Tonka veloutée, amande et fleur d\'oranger',
+    tagline: "Tonka veloutée, amande et fleur d'oranger",
     inspiration: 'Velvet Tonka – BDK Parfums',
-    notes: { top: ['Amande', 'Fleur d\'oranger'], heart: ['Rose absolue', 'Tabac des Balkans'], base: ['Fève de Tonka absolue', 'Vanille de Madagascar', 'Bois d\'Amyris', 'Bois ambrés'] },
+    notes: { top: ["Amande", "Fleur d'oranger"], heart: ['Rose absolue', 'Tabac des Balkans'], base: ['Fève de Tonka absolue', 'Vanille de Madagascar', "Bois d'Amyris", 'Bois ambrés'] },
   },
   {
     id: 'almae',
@@ -158,16 +163,16 @@ export const products: Product[] = [
     collection: 'umbrae',
     tagline: 'Oud maracuja, fruit de la passion et oud profond',
     inspiration: 'Oud Maracuja – Maison Crivelli',
-    notes: { top: ['Fruit de la passion', 'Safran', 'Rose de Turquie'], heart: ['Oud', 'Benjoin', 'Patchouli d\'Indonésie'], base: ['Cuir', 'Vanille', 'Labdanum', 'Akigalawood'] },
+    notes: { top: ['Fruit de la passion', 'Safran', 'Rose de Turquie'], heart: ['Oud', 'Benjoin', "Patchouli d'Indonésie"], base: ['Cuir', 'Vanille', 'Labdanum', 'Akigalawood'] },
   },
   // FLORAE
   {
     id: 'lysae',
     name: 'LYS\u00C6',
     collection: 'florae',
-    tagline: 'Coucher de soleil floral, poire et fleur d\'oranger',
+    tagline: "Coucher de soleil floral, poire et fleur d'oranger",
     inspiration: 'Passion Riviera – Place de la Rêverie',
-    notes: { top: ['Poire', 'Fleur d\'oranger', 'Héliotrope'], heart: ['Jasmin', 'Vanille', 'Rose'], base: ['Oud du Vietnam', 'Fève de Tonka', 'Muscs'] },
+    notes: { top: ['Poire', "Fleur d'oranger", 'Héliotrope'], heart: ['Jasmin', 'Vanille', 'Rose'], base: ['Oud du Vietnam', 'Fève de Tonka', 'Muscs'] },
   },
   {
     id: 'hibiscae',

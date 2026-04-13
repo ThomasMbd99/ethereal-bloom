@@ -182,12 +182,12 @@ const CollectionPage = () => {
                 {story.paragraphs.map((p, i) => (
                   <motion.p
                     key={i}
-                    initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
+                    initial={{ opacity: 0, y: 15 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: '-40px' }}
                     transition={{ delay: i * 0.1, duration: 0.8 }}
                     className="font-display text-base lg:text-lg italic leading-relaxed text-foreground/75 whitespace-pre-line"
-                    style={{ textAlign: i % 2 === 0 ? 'left' : 'right' }}
+                    style={{ textAlign: 'center' }}
                   >
                     {p}
                   </motion.p>

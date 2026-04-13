@@ -401,48 +401,84 @@ const Index = () => {
           </div>
         </section>
 
-        {/* ── DA SHOWCASE ── */}
-        <section className="py-20 lg:py-28 relative overflow-hidden">
-          <div className="container mx-auto px-4 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-5xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.9 }}
-              >
-                <div
-                  className="rounded-lg overflow-hidden relative"
-                  style={{ boxShadow: '0 40px 80px rgba(0,0,0,0.5), 0 0 60px rgba(196,149,106,0.08)' }}
-                >
-                  <img src={almaePromo} alt="ALMÆ" className="w-full object-cover" />
-                </div>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.9 }}
-                className="space-y-6"
-              >
-                <p className="font-body text-[10px] tracking-[0.4em] uppercase" style={{ color: 'rgba(196,149,106,0.6)' }}>
-                  Notre DA
-                </p>
-                <h2 className="font-display text-3xl lg:text-4xl italic font-light">
-                  Le mystère comme signature.
-                </h2>
-                <p className="font-body text-sm leading-relaxed text-foreground/50">
-                  Chaque flacon THÆM ÆTERNUM est une œuvre en soi. Verre lourd, finitions dorées, étiquette crème avec le symbole Æ. Notre identité est niche, mystérieuse, intime.
-                </p>
-                <Link
-                  to="/histoire"
-                  className="inline-block font-body text-xs tracking-[0.3em] uppercase pb-1 transition-opacity hover:opacity-60"
-                  style={{ color: 'hsl(43,50%,54%)', borderBottom: '1px solid hsl(43,50%,54%)' }}
-                >
-                  Notre Histoire →
-                </Link>
-              </motion.div>
-            </div>
+        {/* ── EXTRAIT DE PARFUM ── */}
+        <section className="relative py-28 lg:py-36 overflow-hidden">
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
+            <span className="font-display text-[25vw] font-bold leading-none" style={{ color: 'rgba(196,149,106,0.03)' }}>Æ</span>
+          </div>
+
+          <div className="container mx-auto px-6 lg:px-16 max-w-2xl relative z-10 text-center">
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2 }}
+              className="h-px mb-16 origin-center"
+              style={{ background: 'linear-gradient(to right, transparent, hsl(43,50%,54%), transparent)' }}
+            />
+
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="font-body text-[10px] uppercase tracking-[0.5em] mb-6"
+              style={{ color: 'rgba(196,149,106,0.6)' }}
+            >
+              Notre engagement
+            </motion.p>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1, duration: 0.9 }}
+              className="font-display text-3xl lg:text-5xl italic font-light mb-8"
+            >
+              Extrait de <span style={{ color: 'hsl(43,50%,54%)' }}>Parfum</span>
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.9 }}
+              className="font-display italic text-base lg:text-lg leading-relaxed mb-6"
+              style={{ color: 'hsl(var(--foreground) / 0.55)' }}
+            >
+              La concentration la plus haute. La signature la plus longue.
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.9 }}
+              className="font-body text-sm leading-relaxed mb-10"
+              style={{ color: 'hsl(var(--foreground) / 0.4)' }}
+            >
+              Toutes nos créations sont formulées en extrait de parfum pur. Pas d&apos;eau de toilette, pas de compromis. Chaque fragrance THÆM ÆTERNUM tient sur la peau et laisse un sillage que l&apos;on remarque sans chercher à l&apos;imposer.
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5, duration: 0.9 }}
+              className="font-display italic text-base"
+              style={{ color: 'hsl(43,50%,54%)' }}
+            >
+              C&apos;est notre seul format de création. Par choix.
+            </motion.p>
+
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 1.2 }}
+              className="h-px mt-16 origin-center"
+              style={{ background: 'linear-gradient(to right, transparent, hsl(43,50%,54%), transparent)' }}
+            />
           </div>
         </section>
 
