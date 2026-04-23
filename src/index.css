@@ -169,7 +169,7 @@
 }
 
 [data-theme="vitae"] body {
-  background: linear-gradient(160deg, #7a1500 0%, #c03000 25%, #e05500 55%, #cc7700 80%, #a08800 100%) !important;
+  background: linear-gradient(160deg, #7a1500 0%, #c03000 25%, #e05500 55%, #cc7700 80%, #FF6B2B 100%) !important;
   background-attachment: fixed !important;
 }
 

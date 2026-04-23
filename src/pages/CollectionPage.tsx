@@ -1,8 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { getCollection, type Collection } from '@/data/products';
-import { useParfums } from '@/hooks/useParfums';
+import { getCollection, getCollectionProducts, type Collection } from '@/data/products';
 import { collectionStories } from '@/data/collectionStories';
 import { useTheme } from '@/context/ThemeContext';
 import ProductCard from '@/components/ProductCard';
@@ -14,8 +13,7 @@ const CollectionPage = () => {
   const { id } = useParams<{ id: string }>();
   const { setTheme } = useTheme();
   const collection = id ? getCollection(id as Collection) : undefined;
-  const { getByCollection, loading } = useParfums();
-  const prods = id ? getByCollection(id as Collection) : [];
+  const prods = id ? getCollectionProducts(id as Collection) : [];
   const story = id ? collectionStories[id as keyof typeof collectionStories] : undefined;
 
   const heroRef = useRef<HTMLDivElement>(null);
@@ -229,11 +227,7 @@ const CollectionPage = () => {
           </motion.div>
 
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
-            {loading ? (
-              <p className="col-span-3 text-center font-body text-sm opacity-50 py-12">Chargement des fragrances…</p>
-            ) : (
-              prods.map((p, i) => <ProductCard key={p.id} product={p} index={i} />)
-            )}
+            {prods.map((p, i) => <ProductCard key={p.id} product={p} index={i} />)}
           </div>
         </div>
 

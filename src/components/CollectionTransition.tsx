@@ -20,7 +20,7 @@ const collectionParticles: Record<Collection, { colors: string[]; shapes: string
   vitae: {
     colors: ['#FF6B2B', '#FF4500', '#FFB347', '#FFE566', '#FF8C00', '#FF6F61'],
     shapes: ['circle', 'drop', 'burst'],
-    label: 'Fruits · Éclat · Soleil',
+    label: 'Fruits · Énergie · Vie',
   },
   umbrae: {
     colors: ['#6B0000', '#8B6914', '#4A0E0E', '#FF4500', '#B8860B', '#2C0000'],

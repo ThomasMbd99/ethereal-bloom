@@ -40,7 +40,7 @@ const spawnSacrae = (W: number, H: number): Particle[] =>
   }));
 
 // ── VITÆ : éclats solaires qui explosent depuis le centre de la carte
-const spawnVitae = (W: number, H: number): Particle[] =>
+const spawnVitaea = (W: number, H: number): Particle[] =>
   Array.from({ length: 20 }, (_, i) => {
     const angle = (360 / 20) * i + Math.random() * 10;
     const rad = (angle * Math.PI) / 180;
@@ -76,7 +76,7 @@ const spawnUmbrae = (W: number, H: number): Particle[] =>
   }));
 
 // ── FLORÆ : pétales qui tombent depuis le haut sur toute la largeur
-const spawnNerolae = (W: number, H: number): Particle[] =>
+const spawnFlorae = (W: number, H: number): Particle[] =>
   Array.from({ length: 18 }, (_, i) => ({
     id: Date.now() + i,
     x: Math.random() * W,
@@ -91,8 +91,6 @@ const spawnNerolae = (W: number, H: number): Particle[] =>
     type: 'petal',
   }));
 
-
-// ── ÆRA : bulles d'air cristallines qui flottent vers le haut
 const spawnAera = (W: number, H: number): Particle[] =>
   Array.from({ length: 20 }, (_, i) => ({
     id: Date.now() + i,
@@ -108,7 +106,7 @@ const spawnAera = (W: number, H: number): Particle[] =>
     type: 'grain' as const,
   }));
 
-const spawners = { sacrae: spawnSacrae, vitae: spawnVitae, umbrae: spawnUmbrae, nerolae: spawnNerolae, aera: spawnAera };
+const spawners = { sacrae: spawnSacrae, vitae: spawnVitaea, umbrae: spawnUmbrae, nerolae: spawnFlorae };
 
 const ProductCard = ({ product, index = 0 }: Props) => {
   const collection = getCollection(product.collection);

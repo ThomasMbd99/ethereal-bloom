@@ -62,7 +62,7 @@ export const collections: CollectionInfo[] = [
     name: 'NEROLÆ',
     displayName: 'NEROL<span class="ae-highlight">Æ</span>',
     category: 'Florale & Orientale',
-    description: "La fleur y laisse un voile tendre, lumineux et délicatement troublant.",
+    description: 'La fleur s'impose dans l'air, douce et irrésistible, entre Orient et Occident.',
     mood: 'Élégante, romantique, envoûtante',
     colors: { accent: '#F0A0B8', bg: '#FFF5F8', text: '#4A2030' },
   },
@@ -71,14 +71,14 @@ export const collections: CollectionInfo[] = [
     name: 'ÆRA',
     displayName: '<span class="ae-highlight">Æ</span>RA',
     category: 'Propre & Minimaliste',
-    description: "La pureté y devient un luxe silencieux, aérien et souverain.",
+    description: 'La pureté devient un luxe silencieux, aérien et souverain.',
     mood: 'Pure, aérienne, lumineuse',
     colors: { accent: '#A8D4F0', bg: '#F5FAFF', text: '#1A2A3A' },
   },
 ];
 
 export const products: Product[] = [
-  // SACRAE
+  // SACRÆ
   {
     id: 'dulsae',
     name: 'DULS\u00C6',
@@ -126,7 +126,7 @@ export const products: Product[] = [
     inspiration: 'Blanche Bête – Liquides Imaginaires',
     notes: { top: ['Lait', 'Ambrette'], heart: ['Tubéreuse', 'Jasmin', 'Encens'], base: ['Vanille', 'Musc', 'Fève de Tonka', 'Cacao'] },
   },
-  // VITAEA
+  // VITÆ
   {
     id: 'syrae',
     name: 'SYR\u00C6',
@@ -149,7 +149,7 @@ export const products: Product[] = [
     tagline: 'Explosion de fruits rouges, intense et gourmande',
     notes: { top: ['Fraise', 'Framboise', 'Cassis'], heart: ['Rose', 'Pivoine'], base: ['Vanille', 'Musc', 'Bois blanc'] },
   },
-  // UMBRAE
+  // UMBRÆ
   {
     id: 'aeonis',
     name: '\u00C6ONIS',
@@ -174,7 +174,7 @@ export const products: Product[] = [
     inspiration: 'Oud Maracuja – Maison Crivelli',
     notes: { top: ['Fruit de la passion', 'Safran', 'Rose de Turquie'], heart: ['Oud', 'Benjoin', "Patchouli d'Indonésie"], base: ['Cuir', 'Vanille', 'Labdanum', 'Akigalawood'] },
   },
-  // FLORAE
+  // NEROLÆ
   {
     id: 'lysae',
     name: 'LYS\u00C6',
@@ -198,6 +198,39 @@ export const products: Product[] = [
     tagline: 'Aube céleste, violette marine et vanille poudrée',
     inspiration: 'Celeste – Giardini di Toscana',
     notes: { top: ['Notes marines', 'Citron vert'], heart: ['Violette', 'Framboise', 'Notes florales exotiques'], base: ['Sucre vanillé', 'Ambroxan'] },
+  },
+  // ÆRA
+  {
+    id: 'lysaera',
+    name: 'LYS\u00C6RA',
+    collection: 'aera',
+    tagline: 'Passion Riviera épurée, fraîcheur cristalline',
+    inspiration: 'Passion Riviera – Place de la Rêverie',
+    notes: { top: ['Bergamote', 'Citron vert', 'Pamplemousse'], heart: ['Musc blanc', 'Fleur de coton'], base: ['Bois de cachemire', 'Ambroxan', 'Santal blanc'] },
+  },
+  {
+    id: 'vaemra',
+    name: 'V\u00C6MRA',
+    collection: 'aera',
+    tagline: '724 épuré, lumière et légèreté absolue',
+    inspiration: '724 – Maison Francis Kurkdjian',
+    notes: { top: ['Néroli', 'Mandarine', 'Citron'], heart: ['Rose blanche', 'Jasmin blanc', 'Muguet'], base: ['Musc blanc', 'Cèdre blanc', 'Ambre blanc'] },
+  },
+  {
+    id: 'thaelya',
+    name: 'TH\u00C6LYA',
+    collection: 'aera',
+    tagline: 'Imagination pure, un souffle de lumière froide',
+    inspiration: 'Imagination – Louis Vuitton',
+    notes: { top: ['Aldehydes', 'Iris', 'Bergamote'], heart: ['Vétiver', 'Encens blanc', 'Bois de santal'], base: ['Musc blanc', 'Ambre gris', 'Bois de cèdre'] },
+  },
+  {
+    id: 'taelya',
+    name: 'T\u00C6LYA',
+    collection: 'aera',
+    tagline: 'Ganymède céleste, iris poudré et muscs purs',
+    inspiration: 'Ganymede – Marc-Antoine Barrois',
+    notes: { top: ['Iris', 'Bergamote', 'Poivre blanc'], heart: ['Aldéhydes', 'Jasmin', 'Ylang-ylang'], base: ['Musc blanc', 'Bois de santal', 'Vanille blanche'] },
   },
 ];
 

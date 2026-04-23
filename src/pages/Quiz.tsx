@@ -30,7 +30,6 @@ const questions: { question: string; hint: string; options: QuizOption[] }[] = [
       { label: 'Été', sub: 'Soleil, fruits, liberté', families: ['vitae'] },
       { label: 'Hiver', sub: 'Nuit froide, feu, profondeur', families: ['umbrae'] },
       { label: 'Printemps', sub: 'Fleurs, renouveau, clarté', families: ['nerolae'] },
-      { label: 'Été blanc', sub: 'Pureté, soleil, espace', families: ['aera'] },
     ],
   },
   {
@@ -41,7 +40,6 @@ const questions: { question: string; hint: string; options: QuizOption[] }[] = [
       { label: 'Lin & Coton', sub: 'Légèreté, fraîcheur', families: ['vitae'] },
       { label: 'Cuir & Bois brut', sub: 'Force, authenticité', families: ['umbrae'] },
       { label: 'Soie & Organza', sub: 'Raffinement, délicatesse', families: ['nerolae'] },
-      { label: 'Lin & Coton blanc', sub: 'Minimalisme, pureté', families: ['aera'] },
     ],
   },
   {
@@ -52,7 +50,6 @@ const questions: { question: string; hint: string; options: QuizOption[] }[] = [
       { label: 'Matin ensoleillé', sub: 'Énergie, départ', families: ['vitae'] },
       { label: 'Nuit urbaine', sub: 'Mystère, profondeur', families: ['umbrae'] },
       { label: 'Après-midi fleuri', sub: 'Nature, douceur', families: ['nerolae'] },
-      { label: 'Matin épuré', sub: 'Clarté, fraîcheur, espace', families: ['aera'] },
     ],
   },
   {
@@ -63,7 +60,6 @@ const questions: { question: string; hint: string; options: QuizOption[] }[] = [
       { label: 'Une énergie du matin', sub: 'Vitalité, clarté', families: ['vitae'] },
       { label: 'Une affirmation de soi', sub: 'Signature forte', families: ['umbrae'] },
       { label: 'Une touche poétique', sub: 'Romantisme, subtilité', families: ['nerolae'] },
-      { label: 'Un souffle léger', sub: 'Pureté, discrétion, élégance', families: ['aera'] },
     ],
   },
 ];

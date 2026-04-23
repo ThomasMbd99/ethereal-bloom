@@ -3,9 +3,9 @@ import { useTheme } from '@/context/ThemeContext';
 
 const curtainColors: Record<string, string> = {
   sacrae: '#F5EFE0',
-  vitae: '#c03000',
+  vitae: '#FF6B2B',
   umbrae: '#1A0A00',
-  nerolae: '#FADADD',
+  nerolae: '#FFF0F5',
   aera: '#D6EEFF',
   default: '#0a0a0a',
 };
