@@ -16,9 +16,10 @@ const questions: { question: string; hint: string; options: QuizOption[] }[] = [
     hint: 'Choisissez instinctivement.',
     options: [
       { label: 'Chaleureuse & Enveloppante', sub: 'Cocon, douceur, sécurité', families: ['sacrae'] },
-      { label: 'Fraîche & Pétillante', sub: 'Énergie, légèreté, joie', families: ['vitaea'] },
+      { label: 'Fraîche & Pétillante', sub: 'Énergie, légèreté, joie', families: ['vitae'] },
       { label: 'Mystérieuse & Profonde', sub: 'Intensité, caractère, force', families: ['umbrae'] },
-      { label: 'Lumineuse & Romantique', sub: 'Élégance, grâce, poésie', families: ['florae'] },
+      { label: 'Lumineuse & Romantique', sub: 'Élégance, grâce, poésie', families: ['nerolae'] },
+      { label: 'Pure & Aérienne', sub: 'Légèreté, clarté, liberté', families: ['aera'] },
     ],
   },
   {
@@ -26,9 +27,10 @@ const questions: { question: string; hint: string; options: QuizOption[] }[] = [
     hint: 'Celle qui vous ressemble.',
     options: [
       { label: 'Automne', sub: 'Épices, bois, chaleur', families: ['sacrae', 'umbrae'] },
-      { label: 'Été', sub: 'Soleil, fruits, liberté', families: ['vitaea'] },
+      { label: 'Été', sub: 'Soleil, fruits, liberté', families: ['vitae'] },
       { label: 'Hiver', sub: 'Nuit froide, feu, profondeur', families: ['umbrae'] },
-      { label: 'Printemps', sub: 'Fleurs, renouveau, clarté', families: ['florae'] },
+      { label: 'Printemps', sub: 'Fleurs, renouveau, clarté', families: ['nerolae'] },
+      { label: 'Été blanc', sub: 'Pureté, soleil, espace', families: ['aera'] },
     ],
   },
   {
@@ -36,9 +38,10 @@ const questions: { question: string; hint: string; options: QuizOption[] }[] = [
     hint: 'Celle que vous porteriez toujours.',
     options: [
       { label: 'Cachemire & Velours', sub: 'Douceur, confort, chaleur', families: ['sacrae'] },
-      { label: 'Lin & Coton', sub: 'Légèreté, fraîcheur', families: ['vitaea'] },
+      { label: 'Lin & Coton', sub: 'Légèreté, fraîcheur', families: ['vitae'] },
       { label: 'Cuir & Bois brut', sub: 'Force, authenticité', families: ['umbrae'] },
-      { label: 'Soie & Organza', sub: 'Raffinement, délicatesse', families: ['florae'] },
+      { label: 'Soie & Organza', sub: 'Raffinement, délicatesse', families: ['nerolae'] },
+      { label: 'Lin & Coton blanc', sub: 'Minimalisme, pureté', families: ['aera'] },
     ],
   },
   {
@@ -46,9 +49,10 @@ const questions: { question: string; hint: string; options: QuizOption[] }[] = [
     hint: 'Celui où vous êtes vous-même.',
     options: [
       { label: 'Soirée cocon', sub: 'Chaleur, intimité', families: ['sacrae'] },
-      { label: 'Matin ensoleillé', sub: 'Énergie, départ', families: ['vitaea'] },
+      { label: 'Matin ensoleillé', sub: 'Énergie, départ', families: ['vitae'] },
       { label: 'Nuit urbaine', sub: 'Mystère, profondeur', families: ['umbrae'] },
-      { label: 'Après-midi fleuri', sub: 'Nature, douceur', families: ['florae'] },
+      { label: 'Après-midi fleuri', sub: 'Nature, douceur', families: ['nerolae'] },
+      { label: 'Matin épuré', sub: 'Clarté, fraîcheur, espace', families: ['aera'] },
     ],
   },
   {
@@ -56,9 +60,10 @@ const questions: { question: string; hint: string; options: QuizOption[] }[] = [
     hint: 'Votre rapport au parfum, en vérité.',
     options: [
       { label: 'Un rituel réconfortant', sub: 'Famille, mémoire', families: ['sacrae'] },
-      { label: 'Une énergie du matin', sub: 'Vitalité, clarté', families: ['vitaea'] },
+      { label: 'Une énergie du matin', sub: 'Vitalité, clarté', families: ['vitae'] },
       { label: 'Une affirmation de soi', sub: 'Signature forte', families: ['umbrae'] },
-      { label: 'Une touche poétique', sub: 'Romantisme, subtilité', families: ['florae'] },
+      { label: 'Une touche poétique', sub: 'Romantisme, subtilité', families: ['nerolae'] },
+      { label: 'Un souffle léger', sub: 'Pureté, discrétion, élégance', families: ['aera'] },
     ],
   },
 ];
@@ -83,7 +88,7 @@ const Quiz = () => {
     if (!showResult) return null;
 
     // Tally family scores
-    const scores: Record<Collection, number> = { sacrae: 0, vitaea: 0, umbrae: 0, florae: 0 };
+    const scores: Record<Collection, number> = { sacrae: 0, vitae: 0, umbrae: 0, nerolae: 0, aera: 0 };
     answers.forEach((optIdx, qIdx) => {
       const option = questions[qIdx].options[optIdx];
       option.families.forEach(f => { scores[f] += 1; });

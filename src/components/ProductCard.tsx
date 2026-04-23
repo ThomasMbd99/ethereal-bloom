@@ -40,7 +40,7 @@ const spawnSacrae = (W: number, H: number): Particle[] =>
   }));
 
 // ── VITÆ : éclats solaires qui explosent depuis le centre de la carte
-const spawnVitaea = (W: number, H: number): Particle[] =>
+const spawnVitae = (W: number, H: number): Particle[] =>
   Array.from({ length: 20 }, (_, i) => {
     const angle = (360 / 20) * i + Math.random() * 10;
     const rad = (angle * Math.PI) / 180;
@@ -50,7 +50,7 @@ const spawnVitaea = (W: number, H: number): Particle[] =>
       x: W / 2, y: H / 2,
       tx: Math.cos(rad) * dist,
       ty: Math.sin(rad) * dist,
-      color: ['#A8D400', '#FFB347', '#FF6F61', '#FFE566', '#C8E600'][Math.floor(Math.random() * 5)],
+      color: ['#FF6B2B', '#FF4500', '#FFB347', '#FFE566', '#FF8C00'][Math.floor(Math.random() * 5)],
       size: 3 + Math.random() * 5,
       duration: 0.6 + Math.random() * 0.4,
       delay: Math.random() * 0.1,
@@ -76,14 +76,14 @@ const spawnUmbrae = (W: number, H: number): Particle[] =>
   }));
 
 // ── FLORÆ : pétales qui tombent depuis le haut sur toute la largeur
-const spawnFlorae = (W: number, H: number): Particle[] =>
+const spawnNerolae = (W: number, H: number): Particle[] =>
   Array.from({ length: 18 }, (_, i) => ({
     id: Date.now() + i,
     x: Math.random() * W,
     y: -10 + Math.random() * (H * 0.2),
     tx: (Math.random() - 0.5) * 50,
     ty: 60 + Math.random() * 80,
-    color: ['#D4A8D4', '#F4C2C2', '#E8B4E8', '#FFB7C5', '#DDA0DD'][Math.floor(Math.random() * 5)],
+    color: ['#F0A0B8', '#FFB7C5', '#FADADD', '#FFD6E0', '#FFC0CB'][Math.floor(Math.random() * 5)],
     size: 8 + Math.random() * 7,
     duration: 1.1 + Math.random() * 0.7,
     delay: Math.random() * 0.4,
@@ -91,7 +91,24 @@ const spawnFlorae = (W: number, H: number): Particle[] =>
     type: 'petal',
   }));
 
-const spawners = { sacrae: spawnSacrae, vitaea: spawnVitaea, umbrae: spawnUmbrae, florae: spawnFlorae };
+
+// ── ÆRA : bulles d'air cristallines qui flottent vers le haut
+const spawnAera = (W: number, H: number): Particle[] =>
+  Array.from({ length: 20 }, (_, i) => ({
+    id: Date.now() + i,
+    x: Math.random() * W,
+    y: H * 0.6 + Math.random() * (H * 0.4),
+    tx: (Math.random() - 0.5) * 40,
+    ty: -(60 + Math.random() * 80),
+    color: ['#A8D4F0', '#D6EEFF', '#FFFFFF', '#C0E4FF', '#E8F4FF'][Math.floor(Math.random() * 5)],
+    size: 4 + Math.random() * 8,
+    duration: 1.2 + Math.random() * 0.8,
+    delay: Math.random() * 0.5,
+    rotate: Math.random() * 360,
+    type: 'grain' as const,
+  }));
+
+const spawners = { sacrae: spawnSacrae, vitae: spawnVitae, umbrae: spawnUmbrae, nerolae: spawnNerolae, aera: spawnAera };
 
 const ProductCard = ({ product, index = 0 }: Props) => {
   const collection = getCollection(product.collection);

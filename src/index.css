@@ -67,7 +67,7 @@
     --theme-bg: #F5EFE0;
   }
 
-  [data-theme="vitaea"] {
+  [data-theme="vitae"] {
     --background: 20 100% 20%;
     --foreground: 45 100% 92%;
     --card: 20 90% 16%;
@@ -113,27 +113,50 @@
     --theme-bg: #1A0A00;
   }
 
-  [data-theme="florae"] {
-    --background: 330 60% 93%;
-    --foreground: 320 25% 22%;
-    --card: 325 50% 88%;
-    --card-foreground: 320 25% 22%;
-    --primary: 285 32% 58%;
-    --primary-foreground: 330 60% 97%;
-    --secondary: 315 30% 84%;
-    --secondary-foreground: 320 25% 22%;
-    --muted: 315 24% 82%;
-    --muted-foreground: 320 18% 46%;
-    --accent: 285 32% 58%;
-    --accent-foreground: 330 60% 97%;
-    --border: 315 22% 78%;
-    --input: 315 22% 78%;
-    --ring: 285 32% 58%;
-    --gold: 285 32% 58%;
-    --gold-glow: 285 40% 68%;
-    --navbar-bg: 330 60% 93%;
-    --navbar-border: 315 22% 78%;
-    --theme-bg: #F9E8F0;
+  [data-theme="nerolae"] {
+    --background: 340 60% 94%;
+    --foreground: 330 30% 22%;
+    --card: 338 50% 89%;
+    --card-foreground: 330 30% 22%;
+    --primary: 340 50% 62%;
+    --primary-foreground: 340 60% 97%;
+    --secondary: 335 30% 85%;
+    --secondary-foreground: 330 30% 22%;
+    --muted: 335 24% 83%;
+    --muted-foreground: 330 18% 46%;
+    --accent: 340 50% 62%;
+    --accent-foreground: 340 60% 97%;
+    --border: 335 22% 79%;
+    --input: 335 22% 79%;
+    --ring: 340 50% 62%;
+    --gold: 340 50% 62%;
+    --gold-glow: 340 58% 72%;
+    --navbar-bg: 340 60% 94%;
+    --navbar-border: 335 22% 79%;
+    --theme-bg: #FFF0F5;
+  }
+
+  [data-theme="aera"] {
+    --background: 210 80% 97%;
+    --foreground: 210 40% 18%;
+    --card: 210 70% 93%;
+    --card-foreground: 210 40% 18%;
+    --primary: 205 65% 62%;
+    --primary-foreground: 210 80% 98%;
+    --secondary: 210 45% 88%;
+    --secondary-foreground: 210 40% 18%;
+    --muted: 210 38% 86%;
+    --muted-foreground: 210 22% 42%;
+    --accent: 205 65% 62%;
+    --accent-foreground: 210 80% 98%;
+    --border: 210 30% 82%;
+    --input: 210 30% 82%;
+    --ring: 205 65% 62%;
+    --gold: 205 65% 62%;
+    --gold-glow: 205 72% 72%;
+    --navbar-bg: 210 80% 97%;
+    --navbar-border: 210 30% 82%;
+    --theme-bg: #F5FAFF;
   }
 }
 
@@ -145,7 +168,7 @@
   nav, button, a { transition: background-color 0.6s ease, border-color 0.6s ease, color 0.4s ease; }
 }
 
-[data-theme="vitaea"] body {
+[data-theme="vitae"] body {
   background: linear-gradient(160deg, #7a1500 0%, #c03000 25%, #e05500 55%, #cc7700 80%, #a08800 100%) !important;
   background-attachment: fixed !important;
 }
@@ -155,13 +178,18 @@
   background-attachment: fixed !important;
 }
 
-[data-theme="florae"] body {
-  background: linear-gradient(135deg, #F9E8F0 0%, #EDD5F0 40%, #E8D5F5 70%, #F0E8FA 100%) !important;
+[data-theme="nerolae"] body {
+  background: linear-gradient(135deg, #FFF0F5 0%, #FFD6E7 40%, #FFCCE0 70%, #FFF0F5 100%) !important;
   background-attachment: fixed !important;
 }
 
 [data-theme="sacrae"] body {
   background: linear-gradient(150deg, #F5EFE0 0%, #EFE5CC 40%, #E8D8B8 70%, #F0E8D5 100%) !important;
+  background-attachment: fixed !important;
+}
+
+[data-theme="aera"] body {
+  background: linear-gradient(135deg, #F5FAFF 0%, #D6EEFF 40%, #C0E4FF 70%, #F0F8FF 100%) !important;
   background-attachment: fixed !important;
 }
 

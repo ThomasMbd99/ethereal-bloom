@@ -15,13 +15,14 @@ const Collections = () => {
   }, []);
 
   const themeBgs: Record<string, string> = {
-    sacrae: 'linear-gradient(150deg, #F5EFE0 0%, #EFE5CC 40%, #E8D8B8 70%, #F0E8D5 100%)',
-    vitaea: 'linear-gradient(160deg, #7a1500 0%, #c03000 25%, #e05500 55%, #cc7700 80%, #a08800 100%)',
-    umbrae: 'radial-gradient(ellipse at 30% 60%, #3D1A00 0%, #1A0A00 45%, #0D0500 100%)',
-    florae: 'linear-gradient(135deg, #F9E8F0 0%, #EDD5F0 40%, #E8D5F5 70%, #F0E8FA 100%)',
+    sacrae:  'linear-gradient(150deg, #F5EFE0 0%, #EFE5CC 40%, #E8D8B8 70%, #F0E8D5 100%)',
+    vitae:   'linear-gradient(160deg, #7a1500 0%, #c03000 25%, #e05500 55%, #cc7700 80%, #a08800 100%)',
+    umbrae:  'radial-gradient(ellipse at 30% 60%, #3D1A00 0%, #1A0A00 45%, #0D0500 100%)',
+    nerolae: 'linear-gradient(135deg, #FFF0F5 0%, #FFD6E7 40%, #FFCCE0 70%, #FFF0F5 100%)',
+    aera:    'linear-gradient(135deg, #F5FAFF 0%, #D6EEFF 40%, #C0E4FF 70%, #F0F8FF 100%)',
   };
 
-  const lightThemes = ['sacrae', 'florae'];
+  const lightThemes = ['sacrae', 'nerolae', 'aera'];
 
   const formats = [
     { size: '10ml', label: 'Flacon Voyage', price: '10€', desc: "La découverte. Un format nomade pour apprivoiser une fragrance avant de l'adopter.", featured: false },
@@ -65,7 +66,7 @@ const Collections = () => {
             className="font-display italic text-base lg:text-lg leading-relaxed text-center"
             style={{ color: 'hsl(var(--foreground) / 0.6)' }}
           >
-            Nos gammes THÆM ÆTERNUM ne composent pas des parfums au hasard. La maison a été pensée autour de quatre gammes, quatre univers olfactifs aux intensités et aux signatures bien distinctes. Le fruit, la fleur, la gourmandise et l&apos;ombre y prennent chacun une forme singulière, avec leur propre profondeur, leur propre sillage, leur propre pouvoir.{' '}
+            Nos gammes THÆM ÆTERNUM ne composent pas des parfums au hasard. La maison a été pensée autour de cinq gammes, cinq univers olfactifs aux intensités et aux signatures bien distinctes. Le fruit, la fleur, la gourmandise, l&apos;ombre et la pureté y prennent chacun une forme singulière, avec leur propre profondeur, leur propre sillage, leur propre pouvoir.{' '}
             <span style={{ color: 'hsl(43,50%,54%)' }}>Choisir une gamme, c&apos;est déjà choisir une présence.</span>
           </motion.p>
 
@@ -80,7 +81,7 @@ const Collections = () => {
 
         {/* ── GRILLE GAMMES ── */}
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
             {collections.map((col, i) => {
               const isLight = lightThemes.includes(col.id);
               const textColor = isLight ? col.colors.text : 'hsl(var(--foreground))';

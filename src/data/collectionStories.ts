@@ -10,13 +10,13 @@ export const collectionStories: Record<Collection, { title: string; paragraphs: 
       'SACRÆ ne cherche pas à plaire.\nElle cherche à faire rester.',
     ],
   },
-  vitaea: {
+  vitae: {
     title: 'L\'élan vital',
     paragraphs: [
-      'VITÆA est mouvement.\nUne énergie brute, libre, presque incontrôlable.',
+      'VITÆ est mouvement.\nUne énergie brute, libre, presque incontrôlable.',
       'Les fruits éclatent avant même d\'être touchés.\nFramboise, mangue, cassis, passion.',
       'Tout est vif, juteux, immédiat.\nPuis vient le calme, lent, presque sensuel.',
-      'VITÆA attire sans prévenir.\nEt disparaît avant d\'être comprise.',
+      'VITÆ attire sans prévenir.\nEt disparaît avant d\'être comprise.',
     ],
   },
   umbrae: {
@@ -28,13 +28,22 @@ export const collectionStories: Record<Collection, { title: string; paragraphs: 
       'UMBRÆ ne parle pas fort.\nMais elle reste longtemps.',
     ],
   },
-  florae: {
-    title: 'L\'instant d\'une fleur',
+  nerolae: {
+    title: 'L\'élégance absolue',
     paragraphs: [
-      'FLORÆ n\'est pas une fleur.\nC\'est l\'instant où elle existe.',
-      'Un souffle fragile, entre apparition et disparition.\nRose, hibiscus, fleur blanche, pétales ouverts.',
-      'Rien n\'est figé.\nTout est en mouvement, en vibration.',
-      'FLORÆ ne tient pas dans le temps.\nElle se vit.',
+      'NEROLÆ est une fleur qui ne tombe pas.\nElle s\'impose dans l\'air, douce et irrésistible.',
+      'Rose de Damas. Néroli. Jasmin absolu.\nDes pétales qui vibrent entre Orient et Occident.',
+      'Tout est délicat, mais rien n\'est fragile.\nC\'est la force tranquille de l\'élégance.',
+      'NEROLÆ ne s\'oublie pas.\nElle laisse une trace que le temps ne peut effacer.',
+    ],
+  },
+  aera: {
+    title: 'Le luxe du silence',
+    paragraphs: [
+      'ÆRA est née d\'un vide.\nCelui qu\'on choisit, qu\'on cultive, qu\'on protège.',
+      'Ici, rien n\'est de trop.\nMusc blanc, coton propre, bois de cachemire.',
+      'La pureté n\'est pas l\'absence.\nC\'est une présence silencieuse, absolue.',
+      'ÆRA ne dit rien.\nMais on la sent, longtemps après que quelqu\'un est parti.',
     ],
   },
 };

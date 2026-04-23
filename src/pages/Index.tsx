@@ -304,20 +304,21 @@ const Index = () => {
                 Nos Univers
               </p>
               <h2 className="font-display text-3xl lg:text-5xl italic font-light">
-                Quatre gammes.<br />
+                Cinq gammes.<br />
                 <span className="text-foreground/40">Une maison.</span>
               </h2>
             </motion.div>
 
             {(() => {
               const themeBgs: Record<string, string> = {
-                sacrae: 'linear-gradient(150deg, #F5EFE0 0%, #EFE5CC 40%, #E8D8B8 70%, #F0E8D5 100%)',
-                vitaea: 'linear-gradient(160deg, #7a1500 0%, #c03000 25%, #e05500 55%, #cc7700 80%, #a08800 100%)',
-                umbrae: 'radial-gradient(ellipse at 30% 60%, #3D1A00 0%, #1A0A00 45%, #0D0500 100%)',
-                florae: 'linear-gradient(135deg, #F9E8F0 0%, #EDD5F0 40%, #E8D5F5 70%, #F0E8FA 100%)',
+                sacrae:  'linear-gradient(150deg, #F5EFE0 0%, #EFE5CC 40%, #E8D8B8 70%, #F0E8D5 100%)',
+                vitae:   'linear-gradient(160deg, #7a1500 0%, #c03000 25%, #e05500 55%, #cc7700 80%, #a08800 100%)',
+                umbrae:  'radial-gradient(ellipse at 30% 60%, #3D1A00 0%, #1A0A00 45%, #0D0500 100%)',
+                nerolae: 'linear-gradient(135deg, #FFF0F5 0%, #FFD6E7 40%, #FFCCE0 70%, #FFF0F5 100%)',
+                aera:    'linear-gradient(135deg, #F5FAFF 0%, #D6EEFF 40%, #C0E4FF 70%, #F0F8FF 100%)',
               };
               return (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
                   {collections.map((col, i) => (
                     <motion.div
                       key={col.id}
@@ -338,7 +339,7 @@ const Index = () => {
                             style={{ background: themeBgs[col.id] }}
                           />
                           {(() => {
-                            const lightThemes = ['sacrae', 'florae'];
+                            const lightThemes = ['sacrae', 'nerolae', 'aera'];
                             const isLight = lightThemes.includes(col.id);
                             const textColor = isLight ? col.colors.text : 'hsl(var(--foreground))';
                             const subColor = isLight ? col.colors.text + '99' : 'rgba(255,255,255,0.5)';

@@ -6,9 +6,9 @@ import type { Collection } from '@/data/products';
 
 const bottleImages: Record<Collection, string> = {
   sacrae: sacraeBotlle,
-  vitaea: vitaeaBottle,
+  vitae: vitaeaBottle,
   umbrae: umbraeBottle,
-  florae: floraeBottle,
+  nerolae: floraeBottle,
 };
 
 export const getBottleImage = (collection: Collection) => bottleImages[collection];

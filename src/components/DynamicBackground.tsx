@@ -4,9 +4,10 @@ import { collections, getProduct, type Collection } from '@/data/products';
 
 const collectionBackgrounds: Record<Collection, string> = {
   sacrae: 'linear-gradient(180deg, #1A1610 0%, #0D0B08 100%)',
-  vitaea: 'linear-gradient(180deg, #0A0F08 0%, #080A06 100%)',
+  vitae: 'linear-gradient(180deg, #0A0F08 0%, #080A06 100%)',
   umbrae: 'linear-gradient(180deg, #080404 0%, #0A0505 100%)',
-  florae: 'linear-gradient(180deg, #0F0A10 0%, #0A070B 100%)',
+  nerolae: 'linear-gradient(180deg, #140A10 0%, #0D0608 100%)',
+  aera: 'linear-gradient(180deg, #05080F 0%, #080C14 100%)',
 };
 
 const defaultBg = '#0A0A0A';

@@ -5,7 +5,7 @@ import { useCart } from '@/context/CartContext';
 import { Check, Gift } from 'lucide-react';
 import PageTransition from '@/components/PageTransition';
 
-type CollectionId = 'sacrae' | 'vitaea' | 'umbrae' | 'florae';
+type CollectionId = 'sacrae' | 'vitae' | 'umbrae' | 'nerolae' | 'aera';
 
 type CollectionTheme = {
   fallbackBg: string;
@@ -37,7 +37,7 @@ const collectionThemes: Record<CollectionId, CollectionTheme> = {
     hoverText: '#3D2B1F',
     hoverSubText: 'rgba(61,43,31,0.72)',
   },
-  vitaea: {
+  vitae: {
     fallbackBg:
       'linear-gradient(160deg, #7A1500 0%, #C03000 25%, #E05500 55%, #CC7700 80%, #A08800 100%)',
     hoverBg:
@@ -57,7 +57,7 @@ const collectionThemes: Record<CollectionId, CollectionTheme> = {
     hoverText: '#F2E4D2',
     hoverSubText: 'rgba(242,228,210,0.72)',
   },
-  florae: {
+  nerolae: {
     fallbackBg:
       'linear-gradient(135deg, #FFF7FA 0%, #F7EDF7 35%, #EEF2F8 70%, #FAF8FF 100%)',
     hoverBg:
@@ -66,6 +66,16 @@ const collectionThemes: Record<CollectionId, CollectionTheme> = {
     baseSubText: 'rgba(91,67,81,0.72)',
     hoverText: '#5B4351',
     hoverSubText: 'rgba(91,67,81,0.72)',
+  },
+  aera: {
+    fallbackBg:
+      'linear-gradient(135deg, #F5FAFF 0%, #D6EEFF 40%, #C0E4FF 70%, #F0F8FF 100%)',
+    hoverBg:
+      'linear-gradient(135deg, #F8FCFF 0%, #DEEEFF 45%, #C8EAFF 100%)',
+    baseText: '#1A2A3A',
+    baseSubText: 'rgba(26,42,58,0.72)',
+    hoverText: '#1A2A3A',
+    hoverSubText: 'rgba(26,42,58,0.72)',
   },
 };
 
@@ -433,7 +443,7 @@ const DiscoveryBox = () => {
             </div>
           </div>
 
-          {(['sacrae', 'vitaea', 'umbrae', 'florae'] as const).map((colId, ci) => {
+          {(['sacrae', 'vitae', 'umbrae', 'nerolae', 'aera'] as const).map((colId, ci) => {
             const col = getCollection(colId)!;
             const colProducts = products.filter(p => p.collection === colId);
             const collectionTheme = collectionThemes[colId];

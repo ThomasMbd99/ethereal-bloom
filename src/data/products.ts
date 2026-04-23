@@ -1,4 +1,4 @@
-export type Collection = 'sacrae' | 'vitaea' | 'umbrae' | 'florae';
+export type Collection = 'sacrae' | 'vitae' | 'umbrae' | 'nerolae' | 'aera';
 
 export interface Note {
   top: string[];
@@ -40,13 +40,13 @@ export const collections: CollectionInfo[] = [
     colors: { accent: '#C4956A', bg: '#F5F0E1', text: '#3D2B1F' },
   },
   {
-    id: 'vitaea',
+    id: 'vitae',
     name: 'VITÆ',
     displayName: 'VIT<span class="ae-highlight">Æ</span>',
     category: 'Fruitée & Fraîche',
     description: 'Le fruit y pulse comme une lumière vive, libre et insaisissable.',
     mood: 'Vivante, énergique, solaire',
-    colors: { accent: '#A8D400', bg: '#F5FBE5', text: '#2D3A0F' },
+    colors: { accent: '#FF6B2B', bg: '#FFF5EE', text: '#3A1500' },
   },
   {
     id: 'umbrae',
@@ -58,13 +58,22 @@ export const collections: CollectionInfo[] = [
     colors: { accent: '#8B6914', bg: '#1A1210', text: '#D4B896' },
   },
   {
-    id: 'florae',
-    name: 'FLORÆ',
-    displayName: 'FLOR<span class="ae-highlight">Æ</span>',
-    category: 'Florale & Poudrée',
-    description: 'La fleur y laisse un voile tendre, lumineux et délicatement troublant.',
-    mood: 'Douce, aérienne, romantique',
-    colors: { accent: '#D4A8D4', bg: '#FFF8F0', text: '#4A3040' },
+    id: 'nerolae',
+    name: 'NEROLÆ',
+    displayName: 'NEROL<span class="ae-highlight">Æ</span>',
+    category: 'Florale & Orientale',
+    description: "La fleur y laisse un voile tendre, lumineux et délicatement troublant.",
+    mood: 'Élégante, romantique, envoûtante',
+    colors: { accent: '#F0A0B8', bg: '#FFF5F8', text: '#4A2030' },
+  },
+  {
+    id: 'aera',
+    name: 'ÆRA',
+    displayName: '<span class="ae-highlight">Æ</span>RA',
+    category: 'Propre & Minimaliste',
+    description: "La pureté y devient un luxe silencieux, aérien et souverain.",
+    mood: 'Pure, aérienne, lumineuse',
+    colors: { accent: '#A8D4F0', bg: '#F5FAFF', text: '#1A2A3A' },
   },
 ];
 
@@ -121,7 +130,7 @@ export const products: Product[] = [
   {
     id: 'syrae',
     name: 'SYR\u00C6',
-    collection: 'vitaea',
+    collection: 'vitae',
     tagline: 'Cocktail fruité solaire, passion et pêche',
     inspiration: 'Kirke – Tiziana Terenzi',
     notes: { top: ['Fruit de la passion', 'Pêche', 'Framboise', 'Cassis', 'Poire', 'Sable chaud'], heart: ['Muguet'], base: ['Héliotrope', 'Bois de Santal', 'Vanille', 'Patchouli', 'Musc'] },
@@ -129,14 +138,14 @@ export const products: Product[] = [
   {
     id: 'mangaera',
     name: 'MANG\u00C6RA',
-    collection: 'vitaea',
+    collection: 'vitae',
     tagline: 'Mangue solaire, fruitée et addictive',
     notes: { top: ['Mangue', 'Fruits exotiques'], heart: ['Fleur de frangipanier', 'Noix de coco'], base: ['Musc blanc', 'Vanille'] },
   },
   {
     id: 'rubrae',
     name: 'RUBR\u00C6',
-    collection: 'vitaea',
+    collection: 'vitae',
     tagline: 'Explosion de fruits rouges, intense et gourmande',
     notes: { top: ['Fraise', 'Framboise', 'Cassis'], heart: ['Rose', 'Pivoine'], base: ['Vanille', 'Musc', 'Bois blanc'] },
   },
@@ -169,7 +178,7 @@ export const products: Product[] = [
   {
     id: 'lysae',
     name: 'LYS\u00C6',
-    collection: 'florae',
+    collection: 'nerolae',
     tagline: "Coucher de soleil floral, poire et fleur d'oranger",
     inspiration: 'Passion Riviera – Place de la Rêverie',
     notes: { top: ['Poire', "Fleur d'oranger", 'Héliotrope'], heart: ['Jasmin', 'Vanille', 'Rose'], base: ['Oud du Vietnam', 'Fève de Tonka', 'Muscs'] },
@@ -177,7 +186,7 @@ export const products: Product[] = [
   {
     id: 'hibiscae',
     name: 'HIBISC\u00C6',
-    collection: 'florae',
+    collection: 'nerolae',
     tagline: 'Hibiscus flamboyant, rose et cuir vanillé',
     inspiration: 'Hibiscus Mahajád – Maison Crivelli',
     notes: { top: ['Hibiscus', 'Rose Damascena', 'Cassis', 'Grenade'], heart: ['Menthe cristallisée', 'Cannelle'], base: ['Vanille absolue', 'Cuir', 'Ambrette', 'Ambre'] },
@@ -185,7 +194,7 @@ export const products: Product[] = [
   {
     id: 'celestae',
     name: 'CELEST\u00C6',
-    collection: 'florae',
+    collection: 'nerolae',
     tagline: 'Aube céleste, violette marine et vanille poudrée',
     inspiration: 'Celeste – Giardini di Toscana',
     notes: { top: ['Notes marines', 'Citron vert'], heart: ['Violette', 'Framboise', 'Notes florales exotiques'], base: ['Sucre vanillé', 'Ambroxan'] },

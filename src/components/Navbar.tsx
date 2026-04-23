@@ -15,7 +15,7 @@ const navLinks = [
 ];
 
 const themeLabels: Record<string, string> = {
-  sacrae: 'SACRÆ', vitaea: 'VITÆA', umbrae: 'UMBRÆ', florae: 'FLORÆ',
+  sacrae: 'SACRÆ', vitae: 'VITÆ', umbrae: 'UMBRÆ', nerolae: 'NEROLÆ', aera: 'ÆRA',
 };
 
 const Navbar = () => {

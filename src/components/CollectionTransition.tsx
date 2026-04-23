@@ -17,17 +17,22 @@ const collectionParticles: Record<Collection, { colors: string[]; shapes: string
     shapes: ['circle', 'star', 'swirl'],
     label: 'Sucre · Caramel · Vanille',
   },
-  vitaea: {
-    colors: ['#A8D400', '#FFB347', '#FF6F61', '#4CAF50', '#FFEB3B', '#FF4081'],
+  vitae: {
+    colors: ['#FF6B2B', '#FF4500', '#FFB347', '#FFE566', '#FF8C00', '#FF6F61'],
     shapes: ['circle', 'drop', 'burst'],
-    label: 'Fruits · Énergie · Vie',
+    label: 'Fruits · Éclat · Soleil',
   },
   umbrae: {
     colors: ['#6B0000', '#8B6914', '#4A0E0E', '#FF4500', '#B8860B', '#2C0000'],
     shapes: ['smoke', 'ember', 'flame'],
     label: 'Oud · Ambre · Mystère',
   },
-  florae: {
+  aera: {
+    colors: ['#A8D4F0', '#D6EEFF', '#FFFFFF', '#C0E4FF', '#E8F4FF', '#B8E0FF'],
+    shapes: ['circle', 'drop', 'petal'],
+    label: 'Pureté · Clarté · Légèreté',
+  },
+  nerolae: {
     colors: ['#F4C2C2', '#D4A8D4', '#B2DFDB', '#FFB6C1', '#E6E6FA', '#FFF0F5'],
     shapes: ['petal', 'circle', 'leaf'],
     label: 'Fleurs · Pétales · Lumière',
