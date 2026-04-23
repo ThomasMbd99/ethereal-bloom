@@ -1,7 +1,8 @@
 import { useParams, Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useState, useRef } from 'react';
-import { getProduct, getCollection, formats, getCollectionProducts, type FormatId } from '@/data/products';
+import { getCollection, formats, type FormatId } from '@/data/products';
+import { useParfums } from '@/hooks/useParfums';
 import { getBottleImage } from '@/data/bottleImages';
 import OlfactoryPyramid from '@/components/OlfactoryPyramid';
 import ProductStory from '@/components/ProductStory';
@@ -137,7 +138,8 @@ const UpsellCarousel = ({ products, acc, rgb }: { products: any[], acc: string, 
 
 const ProductPage = () => {
   const { id } = useParams<{ id: string }>();
-  const product = id ? getProduct(id) : undefined;
+  const { parfums, loading, getByCollection } = useParfums();
+  const product = id ? parfums.find(p => p.id === id) : undefined;
   const collection = product ? getCollection(product.collection) : undefined;
   const [selectedFormat, setSelectedFormat] = useState<FormatId>('50ml');
   const [quantity, setQuantity] = useState(1);
@@ -148,10 +150,16 @@ const ProductPage = () => {
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
   const imgY = useTransform(scrollYProgress, [0, 1], ['0%', '12%']);
 
+  if (loading) return (
+    <div className="min-h-screen flex items-center justify-center">
+      <p className="font-display italic text-foreground/40">Chargement...</p>
+    </div>
+  );
+
   if (!product || !collection) return <NotFound />;
 
   const currentFormat = formats.find(f => f.id === selectedFormat)!;
-  const relatedProducts = getCollectionProducts(product.collection).filter(p => p.id !== product.id).slice(0, 3);
+  const relatedProducts = getByCollection(product.collection).filter(p => p.id !== product.id).slice(0, 3);
 
   const acc = collection.colors.accent;
   const hexToRgb = (hex: string) => {
