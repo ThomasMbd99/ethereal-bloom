@@ -1,10 +1,10 @@
 import { useParams, Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useState, useRef } from 'react';
-import { getProduct, getCollection, formats, getCollectionProducts, type FormatId } from '@/data/products';
+import { getCollection, formats, getCollectionProducts, type FormatId } from '@/data/products';
+import { useParfums } from '@/hooks/useParfums';
 import { getBottleImage } from '@/data/bottleImages';
 import OlfactoryPyramid from '@/components/OlfactoryPyramid';
-import ProductStory from '@/components/ProductStory';
 import ProductCard from '@/components/ProductCard';
 import { useCart } from '@/context/CartContext';
 import { Recycle, Check, Minus, Plus, ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -137,7 +137,8 @@ const UpsellCarousel = ({ products, acc, rgb }: { products: any[], acc: string, 
 
 const ProductPage = () => {
   const { id } = useParams<{ id: string }>();
-  const product = id ? getProduct(id) : undefined;
+  const { getById, getByCollection, loading } = useParfums();
+  const product = id ? getById(id) : undefined;
   const collection = product ? getCollection(product.collection) : undefined;
   const [selectedFormat, setSelectedFormat] = useState<FormatId>('50ml');
   const [quantity, setQuantity] = useState(1);
@@ -148,10 +149,16 @@ const ProductPage = () => {
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
   const imgY = useTransform(scrollYProgress, [0, 1], ['0%', '12%']);
 
+  if (loading) return (
+    <div className="min-h-screen flex items-center justify-center">
+      <p className="font-display italic text-foreground/40 text-xl">Chargement...</p>
+    </div>
+  );
+
   if (!product || !collection) return <NotFound />;
 
   const currentFormat = formats.find(f => f.id === selectedFormat)!;
-  const relatedProducts = getCollectionProducts(product.collection).filter(p => p.id !== product.id).slice(0, 3);
+  const relatedProducts = getByCollection(product.collection).filter(p => p.id !== product.id).slice(0, 3);
 
   const acc = collection.colors.accent;
   const hexToRgb = (hex: string) => {
@@ -299,16 +306,43 @@ const ProductPage = () => {
                   {product.tagline}
                 </motion.p>
 
-                {product.inspiration && (
-                  <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.45 }}
-                    className="font-body text-xs text-foreground/35 mt-2 tracking-wider"
-                  >
-                    Inspiré de {product.inspiration}
-                  </motion.p>
-                )}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.45 }}
+                  className="flex items-center gap-3 mt-3"
+                >
+                  {product.type === 'creation' ? (
+                    <span
+                      className="font-body text-[10px] uppercase tracking-[0.3em] px-3 py-1.5 rounded"
+                      style={{
+                        background: `rgba(${rgb}, 0.1)`,
+                        border: `1px solid rgba(${rgb}, 0.3)`,
+                        color: acc,
+                      }}
+                    >
+                      Création THÆM
+                    </span>
+                  ) : (
+                    <>
+                      <span
+                        className="font-body text-[10px] uppercase tracking-[0.3em] px-3 py-1.5 rounded"
+                        style={{
+                          background: 'rgba(255,255,255,0.05)',
+                          border: '1px solid rgba(255,255,255,0.12)',
+                          color: 'rgba(255,255,255,0.45)',
+                        }}
+                      >
+                        Inspiration
+                      </span>
+                      {product.inspiration && (
+                        <span className="font-body text-xs text-foreground/35 tracking-wider italic">
+                          {product.inspiration}
+                        </span>
+                      )}
+                    </>
+                  )}
+                </motion.div>
 
                 {/* Ligne accent */}
                 <motion.div
@@ -406,9 +440,48 @@ const ProductPage = () => {
       </div>
 
       {/* ── HISTOIRE PRODUIT ── */}
-      <div className="container mx-auto px-4 lg:px-16 relative z-10 max-w-4xl py-20">
-        <ProductStory productId={product.id} accentColor={acc} />
-      </div>
+      {product.texte_long && (
+        <div className="container mx-auto px-4 lg:px-16 relative z-10 max-w-4xl py-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="mt-4"
+          >
+            <h3 className="font-display text-xl tracking-wider mb-6 text-foreground">L'Histoire</h3>
+            <div
+              className="border-l-2 pl-6 lg:pl-8 py-4 rounded-r-sm space-y-4"
+              style={{ borderColor: acc, background: 'rgba(255,255,255,0.03)' }}
+            >
+              {product.texte_long.split('\n\n').map((p, i) => (
+                <motion.p
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1, duration: 0.6 }}
+                  className="font-display text-sm lg:text-base italic leading-relaxed text-foreground/80"
+                >
+                  {p}
+                </motion.p>
+              ))}
+            </div>
+            {product.phrase_signature && (
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4, duration: 0.8 }}
+                className="font-display italic text-center text-foreground/40 text-sm mt-8 tracking-widest"
+                style={{ color: `rgba(${rgb}, 0.5)` }}
+              >
+                {product.phrase_signature}
+              </motion.p>
+            )}
+          </motion.div>
+        </div>
+      )}
 
       {relatedProducts.length > 0 && (
         <UpsellCarousel products={relatedProducts} acc={acc} rgb={rgb} />
