@@ -9,8 +9,8 @@ import { useRef, useEffect, useCallback } from 'react';
 
 const bestSellers = [products[0], products[3], products[6], products[9], products[12]];
 
-// ── CANVAS : vague dorée lente + particules flottantes
-const GoldWaveCanvas = () => {
+// ── CANVAS : encre / fumée sombre + poussière dorée
+const InkCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animRef = useRef<number>(0);
 
@@ -24,14 +24,24 @@ const GoldWaveCanvas = () => {
     let H = canvas.height = window.innerHeight;
     let t = 0;
 
-    // Particles
-    const particles = Array.from({ length: 55 }, () => ({
+    const blobs = Array.from({ length: 7 }, (_, i) => ({
+      x: W * (0.1 + Math.random() * 0.8),
+      y: H * (0.1 + Math.random() * 0.8),
+      rx: 180 + Math.random() * 220,
+      ry: 120 + Math.random() * 180,
+      vx: (Math.random() - 0.5) * 0.18,
+      vy: (Math.random() - 0.5) * 0.12,
+      phase: Math.random() * Math.PI * 2,
+      gold: i < 2,
+    }));
+
+    const dust = Array.from({ length: 35 }, () => ({
       x: Math.random() * W,
       y: Math.random() * H,
-      r: 0.8 + Math.random() * 2,
-      vx: (Math.random() - 0.5) * 0.25,
-      vy: -(0.1 + Math.random() * 0.3),
-      opacity: 0.2 + Math.random() * 0.5,
+      r: 0.6 + Math.random() * 1.4,
+      vx: (Math.random() - 0.5) * 0.2,
+      vy: -(0.05 + Math.random() * 0.2),
+      opacity: 0.15 + Math.random() * 0.4,
       phase: Math.random() * Math.PI * 2,
     }));
 
@@ -43,66 +53,64 @@ const GoldWaveCanvas = () => {
 
     const animate = () => {
       ctx.clearRect(0, 0, W, H);
-      t += 0.008;
+      t += 0.005;
 
-      // ── Vagues dorées lentes
-      for (let w = 0; w < 3; w++) {
-        ctx.beginPath();
-        const amp = 55 + w * 20;
-        const freq = 0.0018 + w * 0.0006;
-        const speed = t * (0.4 + w * 0.15);
-        const yBase = H * (0.35 + w * 0.12);
-        const alpha = 0.035 - w * 0.008;
-
-        ctx.moveTo(0, yBase);
-        for (let x = 0; x <= W; x += 4) {
-          const y = yBase
-            + Math.sin(x * freq + speed) * amp
-            + Math.sin(x * freq * 1.7 + speed * 0.8) * (amp * 0.4);
-          ctx.lineTo(x, y);
-        }
-        ctx.lineTo(W, H);
-        ctx.lineTo(0, H);
-        ctx.closePath();
-
-        const grad = ctx.createLinearGradient(0, yBase - amp, 0, yBase + amp);
-        grad.addColorStop(0, `rgba(196,149,106,0)`);
-        grad.addColorStop(0.5, `rgba(196,149,106,${alpha})`);
-        grad.addColorStop(1, `rgba(196,149,106,0)`);
-        ctx.fillStyle = grad;
-        ctx.fill();
-      }
-
-      // ── Lueur centrale pulsante
-      const pulse = 0.06 + Math.sin(t * 1.2) * 0.025;
-      const radial = ctx.createRadialGradient(W / 2, H / 2, 0, W / 2, H / 2, W * 0.55);
+      // Lueur radiale centrale pulsante
+      const pulse = 0.045 + Math.sin(t * 0.9) * 0.018;
+      const radial = ctx.createRadialGradient(W / 2, H * 0.45, 0, W / 2, H * 0.45, W * 0.5);
       radial.addColorStop(0, `rgba(196,149,106,${pulse})`);
-      radial.addColorStop(0.5, `rgba(196,149,106,0.015)`);
+      radial.addColorStop(0.5, `rgba(196,149,106,0.01)`);
       radial.addColorStop(1, 'rgba(196,149,106,0)');
       ctx.fillStyle = radial;
       ctx.fillRect(0, 0, W, H);
 
-      // ── Particules dorées flottantes
-      for (const p of particles) {
-        p.x += p.vx + Math.sin(t + p.phase) * 0.15;
+      // Blobs encre / fumée
+      for (const b of blobs) {
+        b.x += b.vx + Math.sin(t * 0.7 + b.phase) * 0.3;
+        b.y += b.vy + Math.cos(t * 0.5 + b.phase) * 0.2;
+        if (b.x < -300) b.x = W + 300;
+        if (b.x > W + 300) b.x = -300;
+        if (b.y < -300) b.y = H + 300;
+        if (b.y > H + 300) b.y = -300;
+
+        const alpha = b.gold ? 0.028 + Math.sin(t + b.phase) * 0.01 : 0.055 + Math.sin(t * 0.6 + b.phase) * 0.02;
+        const grad = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.rx);
+        if (b.gold) {
+          grad.addColorStop(0, `rgba(196,149,106,${alpha})`);
+          grad.addColorStop(0.5, `rgba(160,110,60,${alpha * 0.5})`);
+          grad.addColorStop(1, 'rgba(196,149,106,0)');
+        } else {
+          grad.addColorStop(0, `rgba(8,4,2,${alpha})`);
+          grad.addColorStop(0.4, `rgba(20,10,5,${alpha * 0.6})`);
+          grad.addColorStop(1, 'rgba(8,4,2,0)');
+        }
+        ctx.save();
+        ctx.scale(1, b.ry / b.rx);
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(b.x, b.y * (b.rx / b.ry), b.rx, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // Poussière dorée flottante
+      for (const p of dust) {
+        p.x += p.vx + Math.sin(t + p.phase) * 0.12;
         p.y += p.vy;
         if (p.y < -10) { p.y = H + 10; p.x = Math.random() * W; }
         if (p.x < -10) p.x = W + 10;
         if (p.x > W + 10) p.x = -10;
 
-        const flicker = p.opacity * (0.7 + Math.sin(t * 2 + p.phase) * 0.3);
-
-        // Glow autour de la particule
-        const glow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 5);
-        glow.addColorStop(0, `rgba(220,180,120,${flicker * 0.4})`);
-        glow.addColorStop(1, 'rgba(220,180,120,0)');
+        const flicker = p.opacity * (0.6 + Math.sin(t * 1.8 + p.phase) * 0.4);
+        const glow = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 6);
+        glow.addColorStop(0, `rgba(220,175,110,${flicker * 0.35})`);
+        glow.addColorStop(1, 'rgba(220,175,110,0)');
         ctx.fillStyle = glow;
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r * 5, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, p.r * 6, 0, Math.PI * 2);
         ctx.fill();
 
-        // Point central
-        ctx.fillStyle = `rgba(245,230,190,${flicker})`;
+        ctx.fillStyle = `rgba(245,225,175,${flicker})`;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fill();
@@ -127,7 +135,56 @@ const GoldWaveCanvas = () => {
     <canvas
       ref={canvasRef}
       className="absolute inset-0 w-full h-full pointer-events-none"
-      style={{ opacity: 1 }}
+    />
+  );
+};
+
+// ── GRAIN CINÉMATOGRAPHIQUE
+const FilmGrain = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const animRef = useRef<number>(0);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let W = canvas.width = window.innerWidth;
+    let H = canvas.height = window.innerHeight;
+
+    const resize = () => {
+      W = canvas.width = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    };
+    window.addEventListener('resize', resize);
+
+    const animate = () => {
+      const imageData = ctx.createImageData(W, H);
+      const data = imageData.data;
+      for (let i = 0; i < data.length; i += 4) {
+        const v = Math.random() * 255;
+        data[i] = v;
+        data[i + 1] = v;
+        data[i + 2] = v;
+        data[i + 3] = Math.random() * 28;
+      }
+      ctx.putImageData(imageData, 0, 0);
+      animRef.current = requestAnimationFrame(animate);
+    };
+
+    animRef.current = requestAnimationFrame(animate);
+    return () => {
+      cancelAnimationFrame(animRef.current);
+      window.removeEventListener('resize', resize);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="fixed inset-0 w-full h-full pointer-events-none z-[999]"
+      style={{ mixBlendMode: 'overlay', opacity: 0.45 }}
     />
   );
 };
@@ -142,11 +199,14 @@ const Index = () => {
     <PageTransition>
       <div className="min-h-screen">
 
+        {/* Grain cinématographique global */}
+        <FilmGrain />
+
         {/* ── HERO ── */}
         <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden">
 
-          {/* Canvas animation */}
-          <GoldWaveCanvas />
+          {/* Canvas animation encre + poussière */}
+          <InkCanvas />
 
           {/* Overlay sombre en haut et bas */}
           <div className="absolute inset-0 pointer-events-none"
